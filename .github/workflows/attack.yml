@@ -1,0 +1,26 @@
+name: Attack Workflow
+
+on:
+  workflow_dispatch:
+    inputs:
+      target_ip:
+        description: 'Target IP'
+        required: true
+        type: string
+      target_port:
+        description: 'Target Port'
+        required: true
+        type: string
+      attack_duration:
+        description: 'Attack Duration (seconds)'
+        required: true
+        type: string
+
+jobs:
+  attack:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run attack
+        run: |
+          echo "Attack launched on ${{ inputs.target_ip }}:${{ inputs.target_port }} for ${{ inputs.attack_duration }} seconds"
+          # Add your attack script here
